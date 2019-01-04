@@ -1,0 +1,17 @@
+server:
+  port: 10010
+spring:
+  application:
+    name: ptg-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+    registry-fetch-interval-seconds: 5
+zuul:
+  prefix: /api
+  routes:
+    ptg-portal: /portal/**   #前端页面微服务的映射路径
+
+  add-host-header: true #携带请求本身的head头信息
+  sensitive-headers: #配置禁止使用头信息，这里设置为null，否则set-cookie无效
